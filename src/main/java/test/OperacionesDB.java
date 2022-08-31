@@ -17,12 +17,11 @@ public class OperacionesDB {
     public static void actualizarPelicula(int id, String 
 genero){
         DBConnection con = new DBConnection();
-        String sql = "UPDATE peliculas SET genero = '" + 
-genero + "' WHERE id = " + id;
+        String sql = "UPDATE peliculas SET genero = '" + genero + "' WHERE id = " + id;
+        
         try {
-        Statement st = con.getConnection
-().createStatement();
-        st.executeUpdate(sql);
+        Statement st = con.getConnection ().createStatement(); st.executeUpdate(sql);
+        
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -35,10 +34,10 @@ genero + "' WHERE id = " + id;
     public static void listarPelicula(){
         DBConnection con = new DBConnection();
         String sql = "SELECT * FROM peliculas";
+        
         try {
-        Statement st = con.getConnection
-().createStatement();
-        ResultSet rs = st.executeQuery(sql);
+        Statement st = con.getConnection ().createStatement(); ResultSet rs = st.executeQuery(sql);
+        
         while (rs.next()){
             int id = rs.getInt("id");
             String titulo = rs.getString("titulo");
@@ -47,8 +46,7 @@ genero + "' WHERE id = " + id;
             int copias = rs.getInt("copias");
             boolean novedad = rs.getBoolean("novedad");
             
-            Pelicula pelicula = new Pelicula(id, titulo, genero, 
-autor, copias, novedad);
+            Pelicula pelicula = new Pelicula(id, titulo, genero, autor, copias, novedad);
             System.out.println(pelicula.toString());
         }
         st.executeQuery(sql);
@@ -61,6 +59,6 @@ autor, copias, novedad);
         }
         
     }
-    
-    
+    // cOMENTARIO DE PRUEBA 
+
 }
